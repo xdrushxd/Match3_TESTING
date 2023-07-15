@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cljqlekrtiopj"]
+
+[ext_resource type="PackedScene" uid="uid://cie07e5wjxiu4" path="res://scenes/concrete.tscn" id="1_te65i"]
+[ext_resource type="Texture2D" uid="uid://dovlolh8chhfo" path="res://art/Obstacles/Slime_v4.png" id="2_v2pyp"]
+
+[node name="slime" instance=ExtResource("1_te65i")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_v2pyp")

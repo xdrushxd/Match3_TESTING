@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2t2ho16oupht"]
+
+[ext_resource type="Texture2D" uid="uid://cj05amyw02cux" path="res://art/Backgrounds/fall.png" id="1_t8n8x"]
+[ext_resource type="Texture2D" uid="uid://4t570ldxgtxc" path="res://art/UI/Top UI v 2.png" id="2_7q3y3"]
+[ext_resource type="Texture2D" uid="uid://cko3vhwq50gle" path="res://art/UI/Bottom UI v 2.png" id="3_bwcii"]
+[ext_resource type="Script" path="res://Scripts/grid.gd" id="4_cxy0q"]
+[ext_resource type="Script" path="res://Scripts/ice_holder.gd" id="5_j6721"]
+[ext_resource type="Script" path="res://lock_holder.gd" id="6_qutnj"]
+[ext_resource type="Script" path="res://Scripts/concrete_holder.gd" id="7_hlqxe"]
+[ext_resource type="Script" path="res://Scripts/slime_holder.gd" id="8_jtcur"]
+
+[node name="game_window" type="Node"]
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 575.0
+offset_bottom = 1026.0
+texture = ExtResource("1_t8n8x")
+expand_mode = 3
+
+[node name="top_ui" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_7q3y3")
+
+[node name="bottom_ui" type="TextureRect" parent="."]
+offset_top = 934.0
+offset_right = 576.0
+offset_bottom = 1026.0
+texture = ExtResource("3_bwcii")
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource("4_cxy0q")
+width = 8
+height = 10
+x_start = 64
+y_start = 250
+offset = 64
+y_offset = 1
+empty_spaces = PackedVector2Array(0, 0, 7, 0, 0, 9, 7, 9, 3, 4, 4, 4, 3, 5, 4, 5)
+ice_spaces = PackedVector2Array(3, 0, 4, 0, 3, 9, 4, 9)
+lock_spaces = PackedVector2Array(3, 2, 4, 2, 3, 7, 4, 7)
+concrete_spaces = PackedVector2Array(3, 1, 4, 1, 3, 8, 4, 8)
+slime_spaces = PackedVector2Array(0, 4, 0, 5, 7, 4, 7, 5)
+
+[node name="ice_holder" type="Node2D" parent="."]
+script = ExtResource("5_j6721")
+
+[node name="lock_holder" type="Node2D" parent="."]
+script = ExtResource("6_qutnj")
+
+[node name="concrete_holder" type="Node2D" parent="."]
+script = ExtResource("7_hlqxe")
+
+[node name="slime_holder" type="Node2D" parent="."]
+script = ExtResource("8_jtcur")
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="damage_concrete" from="grid" to="concrete_holder" method="_on_grid_damage_concrete"]
+[connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
+[connection signal="damage_lock" from="grid" to="lock_holder" method="_on_grid_damage_lock"]
+[connection signal="damage_slime" from="grid" to="slime_holder" method="_on_grid_damage_slime"]
+[connection signal="make_concrete" from="grid" to="concrete_holder" method="_on_grid_make_concrete"]
+[connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
+[connection signal="make_lock" from="grid" to="lock_holder" method="_on_grid_make_lock"]
+[connection signal="make_slime" from="grid" to="slime_holder" method="_on_grid_make_slime"]
+[connection signal="remove_lock" from="lock_holder" to="grid" method="_on_lock_holder_remove_lock"]
+[connection signal="remove_concrete" from="concrete_holder" to="grid" method="_on_concrete_holder_remove_concrete"]
+[connection signal="remove_slime" from="slime_holder" to="grid" method="_on_slime_holder_remove_slime"]
+[connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="grid" method="_on_refill_timer_timeout"]

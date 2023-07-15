@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Match All Tree"
+config/description="Embark on a colorful and addictive puzzle adventure with our captivating match-3 game! Match and swap vibrant gems to create explosive combinations and solve challenging puzzles. Journey through enchanting levels filled with cascading waterfalls, lush forests, and mystical lands. Use strategic thinking and quick reflexes to overcome obstacles, unleash powerful boosters, and achieve high scores. With stunning visuals, immersive sound effects, and intuitive touch controls, our match-3 game offers a delightful experience for players of all ages. Challenge your friends, compete for the top spot on the leaderboard, and become a legendary gem matcher in this exciting mobile game for iOS and Android!"
+run/main_scene="res://scenes/game_window.tscn"
+config/features=PackedStringArray("4.0", "Mobile")
+boot_splash/image="res://art/Backgrounds/wallpaper2.png"
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=1024
+window/size/window_width_override=288
+window/size/window_height_override=512
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="Match All Tree"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/GerapsteKeis420/Documents/Code/movie/BUG2.avi"
+
+[input]
+
+ui_touch={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cie07e5wjxiu4"]
+
+[ext_resource type="PackedScene" uid="uid://bwt0x0e6f4snp" path="res://scenes/ice.tscn" id="1_b0qld"]
+[ext_resource type="Texture2D" uid="uid://dtkwpdunpwfc4" path="res://art/Obstacles/concreteV4.png" id="2_6e48b"]
+
+[node name="concrete" instance=ExtResource("1_b0qld")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6e48b")
